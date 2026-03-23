@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #1e1e1e;
+    --text: #e8e8e8;
+    --muted: #555;
+    --accent: #f0f0f0;
+    --tag-bg: #1a1a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 64px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  header h1 {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+
+  header p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .projects-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: 10px 20px;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+  }
+
+  .project-card:hover {
+    background: var(--surface);
+  }
+
+  .project-card.has-link {
+    cursor: pointer;
+  }
+
+  .project-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    white-space: nowrap;
+    transition: color 0.15s;
+  }
+
+  .project-link:hover { color: var(--accent); }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.6;
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  .project-meta {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: #666;
+    letter-spacing: 0.04em;
+  }
+
+  .tag.lang {
+    color: #999;
+    border-color: #2a2a2a;
+    background: #141414;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-left: auto;
+  }
+  .status-dot.active   { background: #4ade80; box-shadow: 0 0 6px #4ade8066; }
+  .status-dot.wip      { background: #fbbf24; box-shadow: 0 0 6px #fbbf2466; }
+  .status-dot.archived { background: #444; }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 32px 20px; }
+    .project-card { padding: 20px; grid-template-columns: 1fr; }
+    .project-link { grid-column: 1; grid-row: auto; }
+    .project-desc { grid-column: 1; }
+    .project-meta { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>dein.name</h1>
+    <p style="margin-top:6px">code projects</p>
+  </div>
+  <p>2025</p>
+</header>
+
+<div class="projects-grid">
+
+  <!-- ============================================================
+       PROJEKT KOPIEREN & EINFÜGEN — Alles zwischen die Kommentare
+       ============================================================ -->
+
+  <div class="project-card has-link" onclick="window.open('https://github.com/user/projekt1','_blank')">
+    <span class="project-name">Project Alpha</span>
+    <a class="project-link" href="https://projectalpha.dev" target="_blank" onclick="event.stopPropagation()">projectalpha.dev ↗</a>
+    <p class="project-desc">
+      Ein CLI-Tool zum automatischen Refactoring von Legacy-Code. Analysiert Abhängigkeiten und schlägt Modernisierungen vor.
+    </p>
+    <div class="project-meta">
+      <span class="tag lang">Python</span>
+      <span class="tag lang">Click</span>
+      <span class="tag lang">AST</span>
+      <span class="tag">CLI</span>
+      <span class="tag">Open Source</span>
+      <span class="status-dot active" title="aktiv"></span>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <span class="project-name">DataFlow UI</span>
+    <span class="project-link" style="cursor:default">privat</span>
+    <p class="project-desc">
+      Dashboard zur Echtzeit-Visualisierung von Datenpipelines. Drag-and-drop Builder mit exportierbarem Config-Format.
+    </p>
+    <div class="project-meta">
+      <span class="tag lang">TypeScript</span>
+      <span class="tag lang">React</span>
+      <span class="tag lang">D3.js</span>
+      <span class="tag">Web App</span>
+      <span class="status-dot wip" title="in Arbeit"></span>
+    </div>
+  </div>
+
+  <div class="project-card has-link" onclick="window.open('https://github.com/user/rustcache','_blank')">
+    <span class="project-name">rustcache</span>
+    <a class="project-link" href="https://github.com/user/rustcache" target="_blank" onclick="event.stopPropagation()">github ↗</a>
+    <p class="project-desc">
+      Minimaler In-Memory Key-Value Store mit TTL-Support. Benchmarks zeigen 2× schneller als Redis für kleine Payloads.
+    </p>
+    <div class="project-meta">
+      <span class="tag lang">Rust</span>
+      <span class="tag lang">Tokio</span>
+      <span class="tag">Backend</span>
+      <span class="tag">Systems</span>
+      <span class="status-dot archived" title="archiviert"></span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NEUES PROJEKT — MIT LINK:
+
+  <div class="project-card has-link" onclick="window.open('GITHUB_URL','_blank')">
+    <span class="project-name">Projektname</span>
+    <a class="project-link" href="WEBSITE_URL" target="_blank" onclick="event.stopPropagation()">website.url ↗</a>
+    <p class="project-desc">
+      Kurze Beschreibung des Projekts.
+    </p>
+    <div class="project-meta">
+      <span class="tag lang">Sprache</span>
+      <span class="tag lang">Framework</span>
+      <span class="tag">Kategorie</span>
+      <span class="status-dot active"></span>
+    </div>
+  </div>
+
+  NEUES PROJEKT — OHNE LINK (PRIVAT):
+
+  <div class="project-card">
+    <span class="project-name">Projektname</span>
+    <span class="project-link" style="cursor:default">privat</span>
+    <p class="project-desc">
+      Kurze Beschreibung des Projekts.
+    </p>
+    <div class="project-meta">
+      <span class="tag lang">Sprache</span>
+      <span class="tag">Kategorie</span>
+      <span class="status-dot wip"></span>
+    </div>
+  </div>
+
+  STATUS: active | wip | archived
+  ============================================================ -->
+
+</div>
+
+<footer>
+  alpwrk.cc — 2026
+</footer>
+
+</body>
+</html>
