@@ -179,11 +179,9 @@
   <div class="project-card" style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.8rem">loading...</div>
 </div>
 
-<script src="config.js"></script>
 <script>
 // ─── KONFIGURATION ────────────────────────────────────────────
 const GITHUB_USERNAME = 'alpwrk';
-// Token wird aus config.js geladen
 
 // Manuelle Website-Links pro Repo (repo-name: 'https://...')
 const WEBSITE_LINKS = {
@@ -234,7 +232,7 @@ async function loadRepos() {
   try {
     let page = 1, repos = [];
     while (true) {
-      const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}`, { headers: { Authorization: `token ${GITHUB_TOKEN}` } });
+      const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}`);
       if (!res.ok) throw new Error(res.status);
       const data = await res.json();
       repos = repos.concat(data);
@@ -249,7 +247,7 @@ async function loadRepos() {
 
     // Alle Sprachen parallel laden
     const langData = await Promise.all(
-      repos.map(r => fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${r.name}/languages`, { headers: { Authorization: `token ${GITHUB_TOKEN}` } }).then(r => r.json()).catch(() => ({})))
+      repos.map(r => fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${r.name}/languages`).then(r => r.json()).catch(() => ({})))
     );
 
     grid.innerHTML = repos.map((repo, i) => {
