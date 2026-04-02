@@ -255,6 +255,7 @@ async function loadRepos() {
       const websiteUrl = WEBSITE_LINKS[repo.name];
       const topics = (repo.topics || []).filter(t => t !== 'wip');
       const langs = langData[i] || {};
+      const created = new Date(repo.created_at).toLocaleDateString('de-DE');
 
       return `
         <div class="project-card" onclick="window.open('${websiteUrl || repo.html_url}','_blank')" style="cursor:pointer">
@@ -266,6 +267,7 @@ async function loadRepos() {
             }
             <span class="status-dot ${status}"></span>
           </span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.04em;grid-column:2;grid-row:2;align-self:start;white-space:nowrap">CREATED ${created}</span>
           <p class="project-desc">${repo.description || '<span style="color:#333">keine Beschreibung</span>'}</p>
           <div class="project-meta">
             <div style="width:100%">${langBar(langs)}</div>
