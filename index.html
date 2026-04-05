@@ -268,7 +268,7 @@ async function loadRepos() {
             <span class="status-dot ${status}"></span>
           </span>
           <span style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.04em;grid-column:2;grid-row:2;align-self:start;white-space:nowrap">CREATED ${created}</span>
-          <p class="project-desc">${repo.description || '<span style="color:#333">keine Beschreibung</span>'}</p>
+          <p class="project-desc">${repo.description || '<span style="color:#333">NO DESCRIPTION</span>'}</p>
           <div class="project-meta">
             <div style="width:100%">${langBar(langs)}</div>
             ${topics.map(t => `<span class="tag">${t}</span>`).join('')}
