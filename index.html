@@ -1,31 +1,93 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alpwrk</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>alpwrk.cc</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <div>
-    <h1>alpwrk</h1>
-    <p style="margin-top:6px">code projects</p>
-  </div>
-  <p>2026</p>
-</header>
+<button id="themeToggle" onclick="toggleTheme()">#</button>
 
-<div class="projects-grid" id="grid">
-  <div class="project-card" style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.8rem">loading...</div>
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="home-content">
+    <h1 class="name">alpwrk</h1>
+    <p class="tagline">"Talk is cheap. Show me the code."</p>
+    <nav class="main-nav">
+      <a href="https://code.alpwrk.cc" target="_blank" rel="noopener">code-projects</a>
+      <a href="https://codeberg.org/alpwrk" target="_blank" rel="noopener">codeberg</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+  <h2>about</h2>
+  <p class="about-text">Hey, I'm alpwrk. I build things, break things, and self-host everything I can.</p>
+
+  <div class="about-section">
+    <h3>things i do:</h3>
+    <ul>
+      <li>linux & sysadmin</li>
+      <li>web development</li>
+      <li>self-hosting</li>
+      <li>gaming</li>
+    </ul>
+  </div>
+
+  <div class="about-section">
+    <h3>stuff i use:</h3>
+    <div class="tech-grid">
+      <span class="tech-item">CachyOS</span>
+      <span class="tech-item">Arch Linux</span>
+      <span class="tech-item">Docker</span>
+      <span class="tech-item">Cloudflare</span>
+      <span class="tech-item">TrueNAS</span>
+      <span class="tech-item">Nginx</span>
+      <span class="tech-item">Python</span>
+      <span class="tech-item">Node.js</span>
+      <span class="tech-item">Neovim</span>
+      <span class="tech-item">git</span>
+      <span class="tech-item">zsh</span>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h3>languages i use:</h3>
+    <div class="tech-grid">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">JavaScript</span>
+      <span class="tech-item">TypeScript</span>
+      <span class="tech-item">Bash</span>
+      <span class="tech-item">HTML/CSS</span>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h3>useful links:</h3>
+    <div class="links-list">
+      <a href="https://github.com/alpwrk" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://alpwrk.cc" target="_blank" rel="noopener">alpwrk.cc</a>
+    </div>
+  </div>
+
+  <nav class="back-nav"><a onclick="go('home')">← back</a></nav>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="page">
+  <h2>projects</h2>
+  <div class="tag-filter" id="tagFilter"></div>
+  <p class="tag-hint">click on a tag to filter</p>
+  <div class="projects-list" id="projectsList"></div>
+  <nav class="back-nav"><a onclick="go('home')">← back</a></nav>
 </div>
 
 <footer>
-  <span style="color:#4ade80">● active</span> &nbsp;
-  <span style="color:#fbbf24">● work in progress</span> &nbsp;
-  <span style="color:#444">● archived</span>
-  <br><br>alpwrk.cc — 2026
+  <span>alpwrk - 2026</span>
+  <span>made in germany</span>
 </footer>
 
 <script src="main.js"></script>
