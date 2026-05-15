@@ -53,6 +53,16 @@ body {
 }
 #themeToggle:hover { color: var(--fg); border-color: var(--muted); }
 
+/* ── corner label ── */
+#corner-label {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 1.4rem;
+  font-size: 0.67rem;
+  color: var(--footer-c);
+  pointer-events: none;
+}
+
 /* ── pages ── */
 .page {
   display: none;
@@ -98,7 +108,7 @@ h1.name {
   margin-bottom: 0.35rem;
   letter-spacing: -0.5px;
 }
-.tagline {
+.mots {
   color: var(--muted);
   margin-bottom: 0.9rem;
   font-size: 0.85rem;
@@ -233,22 +243,3 @@ nav.back-nav a:hover { opacity: 1; }
   transition: color 0.15s;
 }
 .project-tag:hover { color: var(--fg); }
-
-/* ── footer ── */
-footer {
-  width: 100%;
-  max-width: 500px;
-  padding: 1.2rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.67rem;
-  color: var(--footer-c);
-  border-top: 1px solid var(--border);
-}
-footer a {
-  color: var(--footer-c);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-footer a:hover { color: var(--fg); }
