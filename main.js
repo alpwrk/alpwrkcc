@@ -10,14 +10,18 @@ let activeTag = null;
 const allTags = [...new Set(projects.flatMap(p => p.tags))].sort();
 
 function renderTags() {
-  document.getElementById('tagFilter').innerHTML = allTags.map(t =>
+  const el = document.getElementById('tagFilter');
+  if (!el) return;
+  el.innerHTML = allTags.map(t =>
     `<span class="tag${activeTag === t ? ' active' : ''}" onclick="filterTag('${t}')">${t}</span>`
   ).join('');
 }
 
 function renderProjects() {
+  const el = document.getElementById('projectsList');
+  if (!el) return;
   const filtered = activeTag ? projects.filter(p => p.tags.includes(activeTag)) : projects;
-  document.getElementById('projectsList').innerHTML = filtered.map(p => `
+  el.innerHTML = filtered.map(p => `
     <div class="project-card">
       <a class="project-title" href="${p.url}"${p.url !== '#' ? ' target="_blank" rel="noopener"' : ''}>${p.title}</a>
       <p class="project-desc">${p.desc}</p>
@@ -41,5 +45,45 @@ function toggleTheme() {
   html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
 }
 
+async function fetchNowPlaying() {
+  const el = document.querySelector('.spotify');
+  if (!el) return;
+  try {
+    const res = await fetch(
+      `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=alpwrk&api_key=6fbc18c8057df101241e83dc34760ac0&format=json&limit=1`
+    );
+    if (!res.ok) {
+      console.error('[lastfm] HTTP error:', res.status);
+      return;
+    }
+    const data = await res.json();
+    if (data.error) {
+      console.error('[lastfm] API error:', data.error, data.message);
+      return;
+    }
+    const tracks = data.recenttracks?.track;
+    const track = Array.isArray(tracks) ? tracks[0] : tracks;
+    if (!track) {
+      console.warn('[lastfm] No tracks found for user:', LASTFM_USER);
+      return;
+    }
+    const nowPlaying = track['@attr']?.nowplaying === 'true';
+    if (!nowPlaying) {
+      el.textContent = 'do not disturb';
+      return;
+    }
+    const artist = track.artist?.['#text'] ?? track.artist;
+    const name = track.name;
+    if (!artist || !name) {
+      console.warn('[lastfm] Unexpected track format:', track);
+      return;
+    }
+    el.textContent = `▶ ${artist} — ${name}`;
+  } catch (err) {
+    console.error('[lastfm] Fetch failed:', err);
+  }
+}
+
 renderTags();
 renderProjects();
+fetchNowPlaying();

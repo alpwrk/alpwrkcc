@@ -108,10 +108,11 @@ h1.name {
   margin-bottom: 0.35rem;
   letter-spacing: -0.5px;
 }
-.mots {
+.spotify {
   color: var(--muted);
   margin-bottom: 0.9rem;
   font-size: 0.85rem;
+  min-height: 1.2em;
 }
 h2 {
   font-size: 1.05rem;
