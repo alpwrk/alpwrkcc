@@ -1,5 +1,5 @@
 :root[data-theme="dark"] {
-  --bg: #0e0e0e;
+  --bg: #000000;
   --fg: #d4d4d4;
   --fg-strong: #ffffff;
   --muted: #555;
@@ -10,7 +10,7 @@
   --footer-c: #383838;
 }
 :root[data-theme="light"] {
-  --bg: #f5f5f2;
+  --bg: #ffffff;
   --fg: #333333;
   --fg-strong: #111111;
   --muted: #aaa;
@@ -35,7 +35,41 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
-/* ── theme toggle ── */
+:root[data-theme="dark"] body::before {
+  content: '';
+  position: fixed;
+  top: 20vh;
+  left: 0;
+  width: 44%;
+  height: 50vh;
+  z-index: -1;
+  background: url('imgs/arch.jpg') center bottom / contain no-repeat;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+:root[data-theme="dark"].bg-ready body::before {
+  opacity: 0.22;
+}
+
+:root[data-theme="light"] body::before {
+  content: '';
+  position: fixed;
+  top: 20vh;
+  right: 0;
+  width: 44%;
+  height: 50vh;
+  z-index: -1;
+  background: url('imgs/ascnd.jpg') center bottom / contain no-repeat;
+  filter: contrast(2.1);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+:root[data-theme="light"].bg-ready body::before {
+  opacity: 0.2;
+}
+
 #themeToggle {
   position: fixed;
   top: 1.2rem;
@@ -53,7 +87,6 @@ body {
 }
 #themeToggle:hover { color: var(--fg); border-color: var(--muted); }
 
-/* ── corner label ── */
 #corner-label {
   position: fixed;
   bottom: 1.2rem;
@@ -63,7 +96,6 @@ body {
   pointer-events: none;
 }
 
-/* ── pages ── */
 .page {
   display: none;
   width: 100%;
@@ -121,7 +153,6 @@ h2 {
   margin-bottom: 1.8rem;
 }
 
-/* ── nav ── */
 nav.main-nav {
   display: flex;
   flex-direction: column;
@@ -150,7 +181,6 @@ nav.back-nav a {
 }
 nav.back-nav a:hover { opacity: 1; }
 
-/* ── about ── */
 .about-text {
   color: var(--fg);
   margin-bottom: 2.4rem;
@@ -194,7 +224,6 @@ nav.back-nav a:hover { opacity: 1; }
 .links-list a::before { content: '→ '; color: var(--muted); }
 .links-list a:hover { opacity: 1; }
 
-/* ── projects ── */
 .tag-filter { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
 .tag {
   background: var(--tag-bg);

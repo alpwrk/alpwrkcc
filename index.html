@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>alpwrk.cc</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.dataset.theme = prefersLight ? 'light' : 'dark';
+    })();
+  </script>
 </head>
 <body>
-<!-- GOD IS GOOD -->
 <button id="themeToggle" onclick="toggleTheme()">#</button>
-<!-- HOME -->
 <div id="home" class="page active">
   <div class="home-content">
     <h1 class="name">alpwrk</h1> 
@@ -20,7 +24,7 @@
     </nav>
   </div>
 </div>
-<span id="corner-label">alpwrk - 2026</span>
+<span id="corner-label">alpwrk - computerliebe</span>
 <script src="main.js"></script>
 </body>
 </html>

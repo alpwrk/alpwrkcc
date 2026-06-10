@@ -40,9 +40,27 @@ function go(page) {
   document.getElementById(page).classList.add('active');
 }
 
+const BG_FADE_OUT = 460;
+const BG_SWITCH_DELAY = 260;
+let bgLoadedCount = 0;
+['imgs/arch.jpg', 'imgs/ascnd.jpg'].forEach(src => {
+  const img = new Image();
+  img.onload = () => { bgLoadedCount++; maybeShowBg(); };
+  img.src = src;
+});
+
+function maybeShowBg() {
+  if (bgLoadedCount >= 2) document.documentElement.classList.add('bg-ready');
+}
+
 function toggleTheme() {
   const html = document.documentElement;
-  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  html.classList.remove('bg-ready');
+  setTimeout(() => {
+    html.dataset.theme = next;
+    setTimeout(maybeShowBg, BG_SWITCH_DELAY);
+  }, BG_FADE_OUT);
 }
 
 async function fetchNowPlaying() {
@@ -87,3 +105,4 @@ async function fetchNowPlaying() {
 renderTags();
 renderProjects();
 fetchNowPlaying();
+maybeShowBg();
