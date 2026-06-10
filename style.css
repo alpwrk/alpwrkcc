@@ -87,6 +87,30 @@ body {
 }
 #themeToggle:hover { color: var(--fg); border-color: var(--muted); }
 
+#theme-hint {
+  position: fixed;
+  top: -0.6rem;
+  right: 0.4rem;
+  width: 300px;
+  height: auto;
+  z-index: 98;
+  pointer-events: none;
+  opacity: 0.45;
+  animation: hintFade 0.8s ease 2s forwards;
+}
+@keyframes hintFade {
+  to { opacity: 0; visibility: hidden; }
+}
+/* black-on-white sketch -> adapt to each theme so the paper drops out */
+:root[data-theme="dark"] #theme-hint {
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+:root[data-theme="light"] #theme-hint {
+  mix-blend-mode: multiply;
+}
+@media (max-width: 600px) { #theme-hint { display: none; } }
+
 #corner-label {
   position: fixed;
   bottom: 1.2rem;
