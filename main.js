@@ -164,6 +164,8 @@ async function loadRepos() {
 
 const BG_FADE_OUT = 460;
 const BG_SWITCH_DELAY = 260;
+const BG_FADE_IN = 450;
+let themeSwitching = false;
 let bgLoadedCount = 0;
 ['imgs/alpwrkBANNERv2.png', 'imgs/alpwrkBANNERv2-inv.png'].forEach(src => {
   const img = new Image();
@@ -182,10 +184,20 @@ function toggleTheme() {
     html.dataset.theme = next;
     return;
   }
+  if (themeSwitching) return;
+  themeSwitching = true;
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.disabled = true;
   html.classList.remove('bg-ready');
   setTimeout(() => {
     html.dataset.theme = next;
-    setTimeout(maybeShowBg, BG_SWITCH_DELAY);
+    setTimeout(() => {
+      maybeShowBg();
+      setTimeout(() => {
+        themeSwitching = false;
+        if (btn) btn.disabled = false;
+      }, BG_FADE_IN);
+    }, BG_SWITCH_DELAY);
   }, BG_FADE_OUT);
 }
 
