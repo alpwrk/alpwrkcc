@@ -165,7 +165,7 @@ async function loadRepos() {
 const BG_FADE_OUT = 460;
 const BG_SWITCH_DELAY = 260;
 let bgLoadedCount = 0;
-['imgs/arch.jpg', 'imgs/ascnd.jpg'].forEach(src => {
+['imgs/alpwrkBANNERv2.png', 'imgs/alpwrkBANNERv2-inv.png'].forEach(src => {
   const img = new Image();
   img.onload = () => { bgLoadedCount++; maybeShowBg(); };
   img.src = src;
