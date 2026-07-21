@@ -149,11 +149,10 @@ h1.name {
 @media (max-width: 600px) {
   h1.name { width: 200px; height: 70px; }
 }
-.spotify {
+.tagline {
   color: var(--muted);
   margin-bottom: 0.55rem;
   font-size: 0.85rem;
-  min-height: 1.2em;
 }
 h2 {
   font-size: 1.05rem;

@@ -201,44 +201,4 @@ function toggleTheme() {
   }, BG_FADE_OUT);
 }
 
-async function fetchNowPlaying() {
-  const el = document.querySelector('.spotify');
-  if (!el) return;
-  try {
-    const res = await fetch(
-      `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=alpwrk&api_key=6fbc18c8057df101241e83dc34760ac0&format=json&limit=1`
-    );
-    if (!res.ok) {
-      console.error('[lastfm] HTTP error:', res.status);
-      return;
-    }
-    const data = await res.json();
-    if (data.error) {
-      console.error('[lastfm] API error:', data.error, data.message);
-      return;
-    }
-    const tracks = data.recenttracks?.track;
-    const track = Array.isArray(tracks) ? tracks[0] : tracks;
-    if (!track) {
-      console.warn('[lastfm] No tracks found for user:', LASTFM_USER);
-      return;
-    }
-    const nowPlaying = track['@attr']?.nowplaying === 'true';
-    if (!nowPlaying) {
-      el.textContent = 'do not disturb';
-      return;
-    }
-    const artist = track.artist?.['#text'] ?? track.artist;
-    const name = track.name;
-    if (!artist || !name) {
-      console.warn('[lastfm] Unexpected track format:', track);
-      return;
-    }
-    el.textContent = `▶ ${artist} — ${name}`;
-  } catch (err) {
-    console.error('[lastfm] Fetch failed:', err);
-  }
-}
-
-fetchNowPlaying();
 maybeShowBg();
