@@ -106,11 +106,6 @@ body {
   margin-left: -30px;
 }
 
-#about {
-  padding-top: 4.5rem;
-  padding-bottom: 2rem;
-}
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(5px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -131,7 +126,7 @@ h1.name {
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 0.45s ease;
+  transition: opacity 0.2s ease;
   text-indent: -9999px;
   overflow: hidden;
 }
@@ -153,12 +148,6 @@ h1.name {
   margin-bottom: 0.55rem;
   font-size: 0.85rem;
 }
-h2 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--fg-strong);
-  margin-bottom: 1.8rem;
-}
 
 nav.main-nav {
   display: flex;
@@ -176,60 +165,6 @@ nav.main-nav a {
 }
 nav.main-nav a::before { content: '→ '; color: var(--muted); }
 nav.main-nav a:hover { opacity: 1; }
-
-nav.back-nav { margin-top: 2.5rem; }
-nav.back-nav a {
-  color: var(--fg);
-  text-decoration: none;
-  font-size: 0.8rem;
-  opacity: 0.45;
-  cursor: pointer;
-  transition: opacity 0.15s;
-}
-nav.back-nav a:hover { opacity: 1; }
-
-.about-text {
-  color: var(--fg);
-  margin-bottom: 2.4rem;
-  line-height: 1.8;
-  font-size: 0.83rem;
-}
-.about-section { margin-bottom: 2rem; }
-.about-section h3 {
-  font-size: 0.7rem;
-  color: var(--muted);
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.3px;
-}
-.about-section ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-.about-section ul li { font-size: 0.82rem; }
-.about-section ul li::before { content: '* '; color: var(--muted); }
-
-.tech-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.tech-item {
-  background: var(--tag-bg);
-  border: 1px solid var(--tag-border);
-  padding: 0.22rem 0.55rem;
-  border-radius: 4px;
-  font-size: 0.73rem;
-  color: var(--fg);
-}
-
-.links-list { display: flex; flex-direction: column; gap: 0.45rem; }
-.links-list a {
-  color: var(--fg);
-  text-decoration: none;
-  font-size: 0.82rem;
-  opacity: 0.6;
-  transition: opacity 0.15s;
-}
-.links-list a::before { content: '→ '; color: var(--muted); }
-.links-list a:hover { opacity: 1; }
 
 #projects {
   position: fixed;

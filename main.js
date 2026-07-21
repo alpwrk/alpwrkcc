@@ -162,9 +162,9 @@ async function loadRepos() {
   }
 }
 
-const BG_FADE_OUT = 460;
-const BG_SWITCH_DELAY = 260;
-const BG_FADE_IN = 450;
+const BG_FADE_OUT = 200;
+const BG_SWITCH_DELAY = 90;
+const BG_FADE_IN = 200;
 let themeSwitching = false;
 let bgLoadedCount = 0;
 ['imgs/alpwrkBANNERv2.png', 'imgs/alpwrkBANNERv2-inv.png'].forEach(src => {
