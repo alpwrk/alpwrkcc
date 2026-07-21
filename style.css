@@ -132,7 +132,6 @@ h1.name {
   background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 0.45s ease;
-  /* keeps "alpwrk" for screen readers / no-image fallback */
   text-indent: -9999px;
   overflow: hidden;
 }
@@ -359,7 +358,6 @@ nav.back-nav a:hover { opacity: 1; }
   font-size: 0.85rem;
   color: var(--desc);
   line-height: 1.6;
-  /* col 1 only — col 2 belongs to CREATED, spanning both made them overlap */
   grid-column: 1;
   grid-row: 2;
   min-width: 0;
