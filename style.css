@@ -143,6 +143,23 @@ nav.main-nav a {
 nav.main-nav a::before { content: '→ '; color: var(--muted); }
 nav.main-nav a:hover { opacity: 1; }
 
+#contactLabel {
+  display: inline-block;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+#contactLink.swapping #contactLabel {
+  opacity: 0;
+  transform: translateY(3px);
+}
+#contactLink.copied {
+  color: var(--accent);
+  opacity: 1;
+}
+.contact-email {
+  color: var(--muted);
+  margin-left: 0.35em;
+}
+
 #projects {
   position: fixed;
   inset: 0;

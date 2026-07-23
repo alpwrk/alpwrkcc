@@ -162,6 +162,52 @@ async function loadRepos() {
   }
 }
 
+const EMAIL = 'x@alpwrk.cc';
+let contactTimer = null;
+let contactSwapping = false;
+
+function setContactLabel(text, copied) {
+  const link = document.getElementById('contactLink');
+  const label = document.getElementById('contactLabel');
+  link.classList.add('swapping');
+  setTimeout(() => {
+    label.innerHTML = text;
+    link.classList.toggle('copied', copied);
+    link.classList.remove('swapping');
+    contactSwapping = false;
+  }, 150);
+}
+
+function copyEmail() {
+  if (contactSwapping) return;
+  contactSwapping = true;
+  const done = () => {
+    setContactLabel(`email copied ✓ <span class="contact-email">${EMAIL}</span>`, true);
+    clearTimeout(contactTimer);
+    contactTimer = setTimeout(() => {
+      contactSwapping = true;
+      setContactLabel('contact', false);
+    }, 1800);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(EMAIL).then(done).catch(() => fallbackCopy(done));
+  } else {
+    fallbackCopy(done);
+  }
+}
+
+function fallbackCopy(done) {
+  const ta = document.createElement('textarea');
+  ta.value = EMAIL;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch {}
+  ta.remove();
+  done();
+}
+
 const BG_FADE_OUT = 200;
 const BG_SWITCH_DELAY = 90;
 const BG_FADE_IN = 200;
