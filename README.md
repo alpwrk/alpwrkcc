@@ -28,7 +28,7 @@ Live at [alpwrk.cc](https://alpwrk.cc).
 index.html   home + slide-up code-projects panel, sets the theme before first paint
 main.js      theme toggle, wordmark preload, github fetch + cache
 style.css    css variables per theme, monospace home, scoped code-projects styles
-imgs/        alpwrkBANNERv2.png (dark), alpwrkBANNERv2-inv.png (light), ttb.png (hint arrow)
+imgs/        alpwrkBANNERv2.png (dark), alpwrkBANNERv2-inv.png (light)
 ```
 
 The two wordmark PNGs have no alpha — the dark one is black-on-black, the light
